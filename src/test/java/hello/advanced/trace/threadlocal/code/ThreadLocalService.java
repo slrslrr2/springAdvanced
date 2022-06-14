@@ -10,8 +10,10 @@ public class ThreadLocalService {
         log.info("저장 name={} -> nameStore={}", name, nameStore.get());
         nameStore.set(name);
         sleep(1000);
-        log.info("조회 nameStore={}", nameStore.get());
-        return nameStore.get();
+        String returnValue = nameStore.get();
+        nameStore.remove();
+        log.info("조회 nameStore={}", returnValue);
+        return returnValue;
     }
 
     private void sleep(int millis) {
